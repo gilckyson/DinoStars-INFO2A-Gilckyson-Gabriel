@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Shooter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="mainMenu" class="message-box">
+        <h1>Dino Shooter</h1>
+        <button id="startButton">Jogar</button>
+    </div>
+
+    <div id="gameScreen" class="hidden">
+        <div class="hud">
+            <div id="cooldownDisplay">Tiro Pronto!</div>
+            <div id="scoreDisplay">Pontos: 0</div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div id="gameOverMessage" class="message-box hidden">
+            <h1>Game Over</h1>
+            <p>Pontuação final: <span id="finalScore">0</span></p>
+            <p>Pressione R para reiniciar</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
