@@ -1,4 +1,3 @@
-// --- Elementos do DOM ---
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('scoreDisplay');
@@ -9,7 +8,6 @@ const startButton = document.getElementById('startButton');
 const mainMenu = document.getElementById('mainMenu');
 const gameScreen = document.getElementById('gameScreen');
 
-// --- Carregar Imagens ---
 const dinoImage = new Image();
 dinoImage.src = 'scott.gif';
 
@@ -19,7 +17,6 @@ obstacleSmallImage.src = 'obstaculo.png';
 const obstacleLargeImage = new Image();
 obstacleLargeImage.src = 'cano.png';
 
-// --- Constantes do Jogo ---
 const GAME = {
     GRAVITY: 0.5,
     JUMP_POWER: -12,
@@ -28,13 +25,9 @@ const GAME = {
     GROUND_HEIGHT: 50,
 };
 
-// --- Variáveis de Estado do Jogo ---
 let dino, obstacles, bullets, score, shootCooldown, isGameOver;
 
-// --- Funções de Lógica do Jogo ---
-
 function createDino() {
-    // Dimensões ajustadas para a imagem scott.gif
     return {
         x: 50, y: 200, width: 40, height: 60,
         velocityY: 0, isOnGround: false
@@ -43,7 +36,6 @@ function createDino() {
 
 function createObstacle() {
     const isSmall = Math.random() > 0.5;
-    // Dimensões ajustadas para as imagens obstaculo.png e cano.png
     const width = isSmall ? 30 : 60;
     const height = isSmall ? 50 : 70;
     return {
@@ -143,11 +135,8 @@ function drawGame() {
     
     ctx.fillStyle = '#535353';
     ctx.fillRect(0, canvas.height - GAME.GROUND_HEIGHT, canvas.width, GAME.GROUND_HEIGHT);
-    
-    // Desenha o dinossauro como imagem
     ctx.drawImage(dinoImage, dino.x, dino.y, dino.width, dino.height);
     
-    // Desenha os obstáculos como imagens
     obstacles.forEach(o => {
         if (o.width <= 35) {
             ctx.drawImage(obstacleSmallImage, o.x, o.y, o.width, o.height);
@@ -170,8 +159,6 @@ function gameLoop() {
     drawGame();
     if (!isGameOver) requestAnimationFrame(gameLoop);
 }
-
-// --- Event Listeners e Lógica de Menu ---
 startButton.addEventListener('click', () => {
     mainMenu.classList.add('hidden');
     gameScreen.classList.remove('hidden');
